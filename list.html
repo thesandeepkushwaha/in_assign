@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Inkoop Assignment</title>
+  <style>
+  p {
+    color: red;
+    margin: 5px;
+    cursor: pointer;
+  }
+  p:hover {
+    background: yellow;
+  }
+  </style>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+</head>
+<body>
+    <div id="container">
+        <ul>
+                <li><button class="list">A</button></li>
+                <li><button class="list">B</button></li>
+                <li><button class="list">C</button></li>
+        </ul>
+        </div>
+<script>
+      $('body').on('click', 'button.list', function() {
+          var parent_name = $(this)[0]['childNodes'][0]['nodeValue'];
+          var siblings_no = $(this).siblings().length;
+          siblings_no = Number(siblings_no)+1;
+          var name = parent_name+siblings_no;
+          $(this).parent()
+            .append(
+              $('<ul>').addClass('newul')
+                .append(
+                  $('<li>')
+                    .append(
+                      $('<button>').addClass('list').text(name)
+                    )
+                )
+            );
+      });
+</script>
+ 
+</body>
+</html>
